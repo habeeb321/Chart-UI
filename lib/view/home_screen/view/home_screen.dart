@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:octohub_assignment/core/constants.dart';
 import 'package:octohub_assignment/view/widgets/first_tab.dart';
@@ -24,15 +25,16 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.grey.shade200,
-        toolbarHeight: size.height * 0.15,
+        toolbarHeight: size.height * 0.2,
         flexibleSpace: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Container(
-            height: size.height * 0.35,
+            height: size.height * 0.4,
             width: double.infinity,
             color: kWhiteColor,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
+              padding: EdgeInsets.symmetric(
+                  horizontal: 10, vertical: size.height * .05),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -41,12 +43,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       IconButton(
                         onPressed: () {
-                          Navigator.pop(context);
+                          Navigator.canPop(context);
                         },
                         icon: const Icon(Icons.arrow_back),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          signingOut(context);
+                        },
                         icon: const Icon(
                           Icons.more_horiz,
                           color: kBlackColor,
@@ -54,6 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
+                  kHeight10,
                   const Text(
                     'My Expenses',
                     style: TextStyle(
@@ -169,6 +174,33 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  void signingOut(context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Log Out'),
+          content: const Text('Are you sure you want to logout'),
+          actions: [
+            TextButton(
+              onPressed: () async {
+                await FirebaseAuth.instance.signOut();
+                Navigator.pop(context);
+              },
+              child: const Text('Continue'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('Cancel'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
