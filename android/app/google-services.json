@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "605641003798",
+    "project_id": "octohub-assignment",
+    "storage_bucket": "octohub-assignment.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605641003798:android:d541a8e0a18d7460337637",
+        "android_client_info": {
+          "package_name": "com.example.octohub_assignment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "605641003798-7cfjm65bcs867882jk7kj6essslnrdln.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjNiJ_A_gREECEfqK4j858hoAB1Knvws8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "605641003798-7cfjm65bcs867882jk7kj6essslnrdln.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
