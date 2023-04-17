@@ -36,15 +36,23 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.more_horiz,
-                        color: kBlackColor,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(Icons.arrow_back),
                       ),
-                    ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.more_horiz,
+                          color: kBlackColor,
+                        ),
+                      ),
+                    ],
                   ),
                   const Text(
                     'My Expenses',
@@ -153,7 +161,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               // Tab content
               Expanded(
-                child: _selectedTabIndex == 0 ? FirstTab() : const SecondTab(),
+                child: _selectedTabIndex == 0
+                    ? const FirstTab()
+                    : const SecondTab(),
               ),
             ],
           ),
